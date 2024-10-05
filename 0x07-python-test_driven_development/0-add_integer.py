@@ -6,11 +6,11 @@ def add_integer(a, b=98):
     """A function that adds 2 integers.
 
     Args:
-        a: first integer.
-        b: second integer, initialized to 98.
+        a: First integer.
+        b: Second integer, initialized to 98.
 
     Raises:
-        TypeError: if a, b are not int, float.
+        TypeError: If a, b are not int, float.
 
     Returns:
         Integer addition of a and b.
