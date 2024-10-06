@@ -8,41 +8,135 @@ Import ``add_integer`` function from ``0-add_integer`` module:
 
 	>>> add_integer = __import__('0-add_integer').add_integer
 
+Test with two int arguments:
+
 	>>> add_integer(2, 4)
 	6
+
+Test with positive and negative int arguments:
+
 	>>> add_integer(150, -50)
 	100
+
+Test with one int argument:
+
 	>>> add_integer(2)
 	100
+
+Test with one float argument:
+
+	>>> add_integer(2.7)
+	100
+
+Test with one negative float argument:
+
+	>>> add_integer(-2.7)
+	96
+
+Test with all arguments 0:
+
 	>>> add_integer(0, 0)
 	0
+
+Test with two float arguments:
+
 	>>> add_integer(2.5, 2.5)
 	4
+
+Test with negative and positive arguments:
+
 	>>> add_integer(-4, 14)
 	10
-	>>> add_integer(3.2, -3.2)
-	0
+
+Test with positive and negative float arguments:
+
+	>>> add_integer(6.2, -3.2)
+	3
+
+Test with one float and one int argument:
+
 	>>> add_integer(3.7, 7)
 	10
+
+Test one int and one float argument:
+
 	>>> add_integer(3, 7.34)
 	10
+
+Test with negative int argument:
+
 	>>> add_integer(-1, -4)
 	-5
+
+Test with negative float argument:
+
 	>>> add_integer(-1.1, -4.3)
 	-5
+
+Test with very large numbers:
+
+	>>> add_integer(9999999999, 9999999999)
+	19999999998
+
+Test with one string and one int argument:
+
 	>>> add_integer('str', 7)
 	Traceback (most recent call last):
 		...
 	TypeError: a must be an integer
+
+Test with one string of digits and one int argument:
+
 	>>> add_integer(8, 'str')
 	Traceback (most recent call last):
 		...
 	TypeError: b must be an integer
-	>>> add_integer("3", 17)
+
+Test with a int and one string of digits argument:
+
+	>>> add_integer(3, "17")
+	Traceback (most recent call last):
+		...
+	TypeError: b must be an integer
+
+Test with two string arguments:
+
+	>>> add_integer("hello", "17")
 	Traceback (most recent call last):
 		...
 	TypeError: a must be an integer
-	>>> add_integer(3, "17")
+
+Test with one None argument:
+
+	>>> add_integer(None)
+	Traceback (most recent call last):
+		...
+	TypeError: a must be an integer
+
+Test with two None arguments:
+
+	>>> add_integer(None, None)
+	Traceback (most recent call last):
+		...
+	TypeError: a must be an integer
+
+Test with unbounded 'inf' argument:
+
+	>>> add_integer(float('inf'), 0)
+	Traceback (most recent call last):
+		...
+	OverflowError: cannot convert float infinity to integer
+
+Test with nan argument:
+
+	>>> add_integer(float('nan'), 0)
+	Traceback (most recent call last):
+		...
+	ValueError: cannot convert float NaN to integer
+
+Test with one list argument:
+
+	>>> add_integer(3, [])
 	Traceback (most recent call last):
 		...
 	TypeError: b must be an integer
