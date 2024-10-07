@@ -8,5 +8,112 @@ Import ``text_indentation`` function from ``5-text_indentation`` module:
 
 	>>> text_indentation = __import__('5-text_indentation').text_indentation
 
-Test matrix with positive int elements and div:
+Test base case:
 
+	>>> text_indentation("Lorem ipsum dolor? sit amet, consectetur: adipiscing. Elit")
+	Lorem ipsum dolor?
+	<BLANKLINE>
+	sit amet, consectetur:
+	<BLANKLINE>
+	adipiscing.
+	<BLANKLINE>
+	Elit
+
+Test string with no delimiters:
+
+	>>> text_indentation("Lorem ipsum dolor sit amet consectetur adipiscing Elit")
+	Lorem ipsum dolor sit amet consectetur adipiscing Elit
+
+Test string with spaces around delimiters:
+
+	>>> text_indentation("Lorem ipsum dolor?    sit amet, consectetur:   adipiscing.    Elit")
+	Lorem ipsum dolor?
+	<BLANKLINE>
+	sit amet, consectetur:
+	<BLANKLINE>
+	adipiscing.
+	<BLANKLINE>
+	Elit
+
+Test empty string:
+
+	>>> text_indentation("")
+
+Test string with space only:
+
+	>>> text_indentation("   ")
+
+Test string with spaces and delimiters:
+
+	>>> text_indentation("  ?  ?:  .  ")
+	?
+	<BLANKLINE>
+	?
+	<BLANKLINE>
+	:
+	<BLANKLINE>
+	.
+	<BLANKLINE>
+
+Test string with newline only:
+
+	>>> text_indentation("\n")
+	<BLANKLINE>
+
+Test string with two newlines only:
+
+	>>> text_indentation("\n\n")
+	<BLANKLINE>
+	<BLANKLINE>
+
+Test string no delimiters, ending with two newlines:
+
+	>>> text_indentation("Lorem ipsum dolor\n\n")
+	Lorem ipsum dolor
+	<BLANKLINE>
+
+Test string ending with space:
+
+	>>> text_indentation("Lorem ipsum dolor? sit amet: adipiscing. Elit ")
+	Lorem ipsum dolor?
+    	<BLANKLINE>
+    	sit amet:
+    	<BLANKLINE>
+    	adipiscing.
+    	<BLANKLINE>
+    	Elit
+
+Test string with delimiters only, no space:
+
+	>>> text_indentation(".?:")
+	.
+	<BLANKLINE>
+	?
+	<BLANKLINE>
+	:
+	<BLANKLINE>
+
+Test string with delimiters and newlines:
+
+	>>> text_indentation(".\n\n\n?")
+	.
+	<BLANKLINE>
+	<BLANKLINE>
+	<BLANKLINE>
+	<BLANKLINE>
+	?
+	<BLANKLINE>
+
+Test string = None:
+
+	>>> text_indentation(None)
+	Traceback (most recent call last):
+		...
+	TypeError: text must be a string
+
+Test number:
+
+	>>> text_indentation(18)
+	Traceback (most recent call last):
+		...
+	TypeError: text must be a string
