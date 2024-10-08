@@ -1,0 +1,150 @@
+The ``101-lazy_matrix_mul`` module
+=============================
+
+Using ``lazy_matrix_mul``
+--------------------
+
+Import ``lazy_matrix_mul`` function from ``101-lazy_matrix_mul`` module:
+
+	>>> lazy_matrix_mul = __import__('101-matrix_mul').lazy_matrix_mul
+
+Test matrix:
+
+	>>> lazy_matrix_mul([[1, 2], [3, 4]], [[5, 6], [7, 8]])
+	array([[19, 22],
+	       [43, 50]])
+
+Test matrix:
+
+	>>> lazy_matrix_mul([[5]], [[2]])
+	array([[10]])
+
+Test matrix:
+
+	>>> lazy_matrix_mul([[1, 2, 3], [3, 1, 4]], [[1, 2], [5, 6], [7, 8]])
+	array([[32, 38],
+	       [36, 44]])
+
+Test matrix:
+
+	>>> lazy_matrix_mul([[1, 2]], [[3, 2], [2, 3]])
+	array([[7, 8]])
+
+Test matrix:
+
+	>>> lazy_matrix_mul([[1, 2, 3], [3, 1, 4]], [[1, 2], [7, 8]])
+	Traceback (most recent call last):
+	    ...
+	ValueError: shapes (2,3) and (2,2) not aligned: 3 (dim 1) != 2 (dim 0)
+
+Test matrix:
+
+	>>> lazy_matrix_mul([], [[2]])
+	Traceback (most recent call last):
+	    ...
+	ValueError: setting an array element with a sequence.
+
+Test matrix:
+
+	>>> lazy_matrix_mul([[2]], [])
+	Traceback (most recent call last):
+	    ...
+	ValueError: setting an array element with a sequence.
+
+Test matrix:
+
+	>>> lazy_matrix_mul([[]], [[2]])
+	Traceback (most recent call last):
+	    ...
+	ValueError: setting an array element with a sequence.
+
+Test matrix:
+
+	>>> lazy_matrix_mul([[2]], [[]])
+	Traceback (most recent call last):
+	    ...
+	ValueError: setting an array element with a sequence.
+
+Test matrix:
+
+	>>> lazy_matrix_mul("hello", [[2]])
+	Traceback (most recent call last):
+	    ...
+	TypeError: matmul() argument 1 must be a sequence, not str
+
+Test matrix:
+
+	>>> lazy_matrix_mul([[2]], "hi")
+	Traceback (most recent call last):
+	    ...
+	TypeError: matmul() argument 2 must be a sequence, not str
+
+Test matrix:
+
+	>>> lazy_matrix_mul([[2, 5, 3]], [[2]])
+	Traceback (most recent call last):
+	    ...
+	ValueError: shapes (1,3) and (1,1) not aligned: 3 (dim 1) != 1 (dim 0)
+
+Test matrix:
+
+	>>> lazy_matrix_mul([2, 5, 3], [[2]])
+	Traceback (most recent call last):
+	    ...
+	TypeError: matmul() argument 1 must be a sequence, not int
+
+Test matrix:
+
+	>>> lazy_matrix_mul([[15]], [2, 5, 3])
+	Traceback (most recent call last):
+	    ...
+	TypeError: matmul() argument 2 must be a sequence, not int
+
+Test matrix:
+
+	>>> lazy_matrix_mul([["school"]], [2, 5, 3])
+	Traceback (most recent call last):
+	    ...
+	TypeError: matmul() argument 1 must be a sequence, not str
+
+Test matrix:
+
+	>>> lazy_matrix_mul([["school"]], [[2, 5, 3]])
+	Traceback (most recent call last):
+	    ...
+	TypeError: matmul() argument 1 must be a sequence, not str
+
+Test matrix:
+
+	>>> lazy_matrix_mul([[2, 5, 3]], [["great"]])
+	Traceback (most recent call last):
+	    ...
+	TypeError: matmul() argument 2 must be a sequence, not str
+
+Test matrix:
+
+	>>> lazy_matrix_mul([[1, 4], [1, 2, 3], [3, 1]], [[1, 2, 3], [7, 8]])
+	Traceback (most recent call last):
+	    ...
+	ValueError: setting an array element with a sequence.
+
+Test matrix:
+
+	>>> lazy_matrix_mul([[1, 4], [2, 3], [3, 1]], [[1, 2, 3], [7, 8]])
+	Traceback (most recent call last):
+	    ...
+	ValueError: setting an array element with a sequence.
+
+Test matrix:
+
+	>>> lazy_matrix_mul([[1]])
+	Traceback (most recent call last):
+	    ...
+	TypeError: lazy_matrix_mul() missing 1 required positional argument: 'm_b'
+
+Test matrix:
+
+	>>> lazy_matrix_mul()
+	Traceback (most recent call last):
+	    ...
+	TypeError: lazy_matrix_mul() missing 2 required positional arguments: 'm_a' and 'm_b'
