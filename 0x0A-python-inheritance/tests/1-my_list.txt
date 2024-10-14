@@ -4,7 +4,7 @@ The ``1-my_list`` module
 Using ``MyList``
 ----------------
 
-Import ``MyList`` from ``1-my_list`` module:
+Import function from  module:
 
 	>>> MyList = __import__('1-my_list').MyList
 
