@@ -1,0 +1,130 @@
+The ``7-base_geometry`` module
+==============================
+
+Using ``BaseGeometry``
+----------------------
+
+Import ``BaseGeometry`` from ``7-base_geometry`` module:
+
+	>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+
+
+Testing the integer_validator method
+------------------------------------
+Correct Class Type test:
+    	>>> bg = BaseGeometry()
+    	>>> type(bg) == BaseGeometry
+    	True
+
+
+integer_validator() instance method
+-----------------------------------
+
+Is instance method:
+    	>>> type(BaseGeometry.__dict__['integer_validator'])
+    	<class 'function'>
+
+Normal value:
+    	>>> bg.integer_validator("key", 54)
+    
+Empty string:
+    	>>> bg.integer_validator("", 4)
+
+None:
+    	>>> bg.integer_validator(None, 23)
+
+Via class 0 arguments:
+    	>>> bg.__class__.integer_validator()
+    	Traceback (most recent call last):
+		...
+    	TypeError: BaseGeometry.integer_validator() missing 3 required positional arguments: 'self', 'name', and 'value'
+
+0 argument test:
+    	>>> bg.integer_validator()
+    	Traceback (most recent call last):
+		...
+    	TypeError: BaseGeometry.integer_validator() missing 2 required positional arguments: 'name' and 'value'
+    
+2 Arguments test:
+    	>>> bg.integer_validator(12, 1)
+
+3 Arguments test:
+    	>>> bg.integer_validator(12, 1, 2)
+    	Traceback (most recent call last):
+		...
+    	TypeError: BaseGeometry.integer_validator() takes 3 positional arguments but 4 were given
+
+Float test 1:
+    	>>> bg.integer_validator("School", 2.0)
+    	Traceback (most recent call last):
+		...
+    	TypeError: School must be an integer
+
+Float test 2:
+    	>>> bg.integer_validator("Best", 2.19)
+    	Traceback (most recent call last):
+		...
+    	TypeError: Best must be an integer
+
+String value test:
+    	>>> bg.integer_validator("Beast", "mode")
+    	Traceback (most recent call last):
+		...
+    	TypeError: Beast must be an integer
+
+List value test:
+    	>>> bg.integer_validator("man", [7, 5])
+    	Traceback (most recent call last):
+		...
+    	TypeError: man must be an integer
+
+None test:
+    	>>> bg.integer_validator("Lex", None)
+    	Traceback (most recent call last):
+		...
+    	TypeError: Lex must be an integer
+
+0 value test:
+    	>>> bg.integer_validator("zero", 0)
+    	Traceback (most recent call last):
+		...
+    	ValueError: zero must be greater than 0
+
+Negative value test:
+    	>>> bg.integer_validator("meg", -515)
+    	Traceback (most recent call last):
+		...
+    	ValueError: meg must be greater than 0
+
+Set:
+	>>> bg.integer_validator("School", {2, 6})
+	Traceback (most recent call last):
+		...
+	TypeError: School must be an integer
+
+
+area() method
+-------------
+
+Normal test:
+    	>>> bg.area()
+    	Traceback (most recent call last):
+		...
+    	Exception: area() is not implemented
+
+Is instance method:
+    	>>> type(BaseGeometry.__dict__['area'])
+    	<class 'function'>
+
+Via class with 0 arguments:
+    	>>> bg.__class__.area()
+    	Traceback (most recent call last):
+		...
+    	TypeError: BaseGeometry.area() missing 1 required positional argument: 'self'
+
+1 argument test:
+    	>>> bg.area(5)
+    	Traceback (most recent call last):
+		...
+    	TypeError: BaseGeometry.area() takes 1 positional argument but 2 were given
+
