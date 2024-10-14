@@ -4,7 +4,7 @@ The ``1-my_list`` module
 Using ``MyList``
 ----------------
 
-Import ``MyList`` class out of ``1-my_list`` module:
+Import ``MyList`` from ``1-my_list`` module:
 
 	>>> MyList = __import__('1-my_list').MyList
 
@@ -36,6 +36,18 @@ Test list of negative ints:
 	>>> mlist = MyList([0, -1, -32, -7, -5, -53])
 	>>> mlist.print_sorted()
 	[-53, -32, -7, -5, -1, 0]
+
+Test list of strings:
+
+	>>> mlist = MyList(["School", "hey", "hello", "first", "second", "zee", "third"])
+	>>> mlist.print_sorted()
+	['School', 'first', 'hello', 'hey', 'second', 'third', 'zee']
+
+Test list of tuples:
+
+	>>> mlist = MyList([(1, 2), (4, 1), (2, 3), (7, 3), (19, 9)])
+	>>> mlist.print_sorted()
+	[(1, 2), (2, 3), (4, 1), (7, 3), (19, 9)]
 
 Test original list unchanged:
 
