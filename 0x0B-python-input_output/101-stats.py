@@ -5,44 +5,45 @@ line by line and computes metrics
 from sys import stdin
 
 
-file_size = two_h = three_h = five_h = 0
-four_h = four_one = four_three = four_four = four_five = 0
+file_size = 0
+status_codes = {'200': 0, '301': 0, '400': 0, '401': 0,
+                '403': 0, '404': 0, '405': 0, '500': 0}
 
-while True:
-    keys = ['200', '301', '400', '401', '403', '404', '405', '500']
-    values = [two_h, three_h, four_h, four_one, four_three, four_four,
-              four_five, five_h]
-    status_code_dict = dict(zip(keys, values))
 
-    try:
-        for i in range(10):
-            line = input()
-            parts = line.split()
+def print_metrics(file_size, status_codes):
+    """Prints statistics since the commencement of inputs.
+
+    Args:
+        file_size: The accumulated file size from metrics.
+        status_codes: A dictionary of key/value pairs of staus codes
+        appearances.
+    """
+
+    print(f"File size: {file_size}")
+    for key in sorted(status_codes.keys()):
+        if status_codes[key] > 0:
+            print(f"{key}: {status_codes[key]}")
+
+
+try:
+    input_count = 0
+    for line in stdin:
+        input_count += 1
+        parts = line.split()
+        try:
             file_size += int(parts[-1])
-            status_code = int(parts[-2])
-            if status_code == 200:
-                two_h += 1
-            if status_code == 301:
-                three_h += 1
-            if status_code == 400:
-                four_h += 1
-            if status_code == 401:
-                four_one += 1
-            if status_code == 403:
-                four_three += 1
-            if status_code == 404:
-                four_four += 1
-            if status_code == 405:
-                four_five += 1
-            if status_code == 500:
-                five_h += 1
-    except KeyboardInterrupt:
-        print(f"File size: {file_size}")
-        for key, value in status_code_dict.items():
-            if value > 0:
-                print(f"{key}: {value}")
-    else:
-        print(f"File size: {file_size}")
-        for key, value in status_code_dict.items():
-            if value > 0:
-                print(f"{key}: {value}")
+        except (ValueError, IndexError):
+            continue
+        try:
+            status_code = parts[-2]
+            if status_code in status_codes:
+                status_codes[status_code] += 1
+        except IndexError:
+            continue
+        if input_count % 10 == 0:
+            print_metrics(file_size, status_codes)
+except KeyboardInterrupt:
+    print_metrics(file_size, status_codes)
+    raise
+
+print_metrics(file_size, status_codes)
