@@ -13,13 +13,15 @@ def append_after(filename="", search_string="", new_string=""):
     """
 
     line_number = 0
-    with open(filename, 'r', encoding='utf-8') as f:
+    with open(filename, encoding='utf-8') as f:
         lines = f.readlines()
 
-        for line in lines:
-            line_number += 1
-            if search_string in line:
-                lines.insert(line_number, new_string)
+    line_list = []
+
+    for line in lines:
+        line_list.append(line)
+        if search_string in line:
+            line_list.append(new_string)
 
     with open(filename, 'w', encoding='utf-8') as f:
-        f.writelines(lines)
+        f.writelines(line_list)
