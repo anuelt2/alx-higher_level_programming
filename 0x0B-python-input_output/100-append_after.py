@@ -12,7 +12,6 @@ def append_after(filename="", search_string="", new_string=""):
         new_string: String to insert.
     """
 
-    line_number = 0
     with open(filename, encoding='utf-8') as f:
         lines = f.readlines()
 
