@@ -5,19 +5,19 @@ Welcome to ALXSE Python project - Almost a circle. This is a project that focuse
 
 ## Concepts Implemented
 
-- 0. Import
-- 1. Exceptions
-- 2. Class
-- 3. Private attribute
-- 4. Getter/Setter
-- 5. Class method
-- 6. Static method
-- 7. Inheritance
-- 8. Unittest
-- 9. Read/Write file
-- 10.args and kwargs
-- 11.Serialization/Deserialization
-- 12.JSON
+- Import
+- Exceptions
+- Class
+- Private attribute
+- Getter/Setter
+- Class method
+- Static method
+- Inheritance
+- Unittest
+- Read/Write file
+- args and kwargs
+- Serialization/Deserialization
+- JSON
 
 
 ## Tasks
