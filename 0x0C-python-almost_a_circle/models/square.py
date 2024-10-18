@@ -38,3 +38,30 @@ class Square(Rectangle):
         """Custom __str__ method. Returns string representation of Square."""
         return ("[Square] (" + str(self.id) + ") " + str(self.x) + "/"
                 + str(self.y) + " - " + str(self.width))
+
+    def update(self, *args, **kwargs):
+        """Assigns an argument or key/value argument to attributes."""
+        if len(args) >= 4:
+            self.id = args[0]
+            self.size = args[1]
+            self.x = args[2]
+            self.y = args[3]
+        elif len(args) >= 3:
+            self.id = args[0]
+            self.size = args[1]
+            self.x = args[2]
+        elif len(args) >= 2:
+            self.id = args[0]
+            self.size = args[1]
+        elif len(args) == 1:
+            self.id = args[0]
+        if not args or len(args) == 0:
+            for key, value in kwargs.items():
+                if key == "id":
+                    self.id = kwargs["id"]
+                if key == "size":
+                    self.size = kwargs["size"]
+                if key == "x":
+                    self.x = kwargs["x"]
+                if key == "y":
+                    self.y = kwargs["y"]
