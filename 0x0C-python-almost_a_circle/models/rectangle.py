@@ -12,8 +12,8 @@ class Rectangle(Base):
         Args:
             width: Width of rectangle.
             height: Height of rectangle.
-            x:
-            y:
+            x: x-coordinate.
+            y: y-coordinate.
             id: Unique id for each rectangle instance.
         """
         self.width = width
