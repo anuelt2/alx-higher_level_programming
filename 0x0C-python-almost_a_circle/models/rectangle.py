@@ -86,3 +86,11 @@ class Rectangle(Base):
         """Prints to stdout the Rectangle instance with # character."""
         for h in range(self.__height):
             print("#" * self.__width)
+
+    def __str__(self):
+        """Custom __str__ method. Returns string representation
+        of Rectangle.
+        """
+        return ("[Rectangle] (" + str(self.id) + ") " + str(self.__x) + "/"
+                + str(self.__y) + " - " + str(self.__width) + "/" +
+                str(self.__height))
