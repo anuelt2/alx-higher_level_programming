@@ -31,6 +31,10 @@ class Rectangle(Base):
     @width.setter
     def width(self, width):
         """Setter for width attribute."""
+        if not isinstance(width, int):
+            raise TypError("width must be an integer")
+        if width <= 0:
+            raise ValueError("width must be > 0")
         self.__width = width
 
     """height private instance attribute."""
@@ -42,6 +46,10 @@ class Rectangle(Base):
     @height.setter
     def height(self, height):
         """Setter for height attribute."""
+        if not isinstance(height, int):
+            raise TypeError("height must be an integer")
+        if height <= 0:
+            raise ValueError("height must be > 0")
         self.__height = height
 
     """x private instance attribute."""
@@ -53,6 +61,8 @@ class Rectangle(Base):
     @x.setter
     def x(self, x):
         """Setter for x attribute."""
+        if x < 0:
+            raise ValueError("x must be >= 0")
         self.__x = x
 
     """y private instance attribute."""
@@ -64,4 +74,6 @@ class Rectangle(Base):
     @y.setter
     def y(self, y):
         """Setter for y."""
+        if y < 0:
+            raise ValueError("y must be >= 0")
         self.__y = y
