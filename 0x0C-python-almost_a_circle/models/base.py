@@ -2,6 +2,7 @@
 """Module that defines Base class."""
 import json
 import csv
+import turtle
 
 
 class Base:
@@ -97,4 +98,38 @@ class Base:
                     inst_list.append(obj)
         except FileNotFoundError:
             return []
+
         return inst_list
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        """Opens a window and draws all the Rectangles and Squares,
+        using Turtle graphics module.
+        """
+        turtle.Turtle()
+        turtle.bgcolor("yellow")
+        turtle.pensize(2)
+        turtle.shape("turtle")
+
+        for rec_obj in list_rectangles:
+            turtle.showturtle()
+            turtle.penup()
+            turtle.goto(rec_obj.x, rec_obj.y)
+            turtle.pendown()
+            for _ in range(2):
+                turtle.forward(rec_obj.width)
+                turtle.right(90)
+                turtle.forward(rec_obj.height)
+                turtle.right(90)
+            turtle.hideturtle()
+
+        for sq_obj in list_squares:
+            turtle.showturtle()
+            turtle.penup()
+            turtle.goto(sq_obj.x, sq_obj.y)
+            turtle.pendown()
+            for _ in range(4):
+                turtle.forward(sq_obj.size)
+                turtle.right(90)
+            turtle.hideturtle()
+        turtle.exitonclick()
