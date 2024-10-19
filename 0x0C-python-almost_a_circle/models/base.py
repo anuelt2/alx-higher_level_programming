@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Module that defines Base class."""
 import json
+import csv
 
 
 class Base:
@@ -62,3 +63,38 @@ class Base:
                 return inst_list
         except FileNotFoundError:
             return []
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """Converts objects to CSV format and saves to file."""
+        with open(f"{cls.__name__}.csv", mode='w', newline='') as f:
+            if list_objs is None:
+                f.write("[]")
+            else:
+                writer_obj = csv.writer(f)
+                if cls.__name__ == "Rectangle":
+                    for obj in list_objs:
+                        writer_obj.writerow([obj.id, obj.width, obj.height,
+                                             obj.x, obj.y])
+                elif cls.__name__ == "Square":
+                    for obj in list_objs:
+                        writer_obj.writerow([obj.id, obj.size, obj.x, obj.y])
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """Converts data in CSV file to Python object."""
+        inst_list = []
+        try:
+            with open(f"{cls.__name__}.csv", mode='r', newline='') as f:
+                reader_obj = csv.reader(f)
+                for row in reader_obj:
+                    if cls.__name__ == "Rectangle":
+                        obj = cls(int(row[1]), int(row[2]), int(row[3]),
+                                  int(row[4]), int(row[0]))
+                    elif cls.__name__ == "Square":
+                        obj = cls(int(row[1]), int(row[2]), int(row[3]),
+                                  int(row[0]))
+                    inst_list.append(obj)
+        except FileNotFoundError:
+            return []
+        return inst_list
