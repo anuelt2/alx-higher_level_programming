@@ -5,12 +5,30 @@ import unittest
 from models.base import Base
 from models.rectangle import Rectangle
 from models.square import Square
+from os import remove
 
 
 class TestBaseSaveToFile(unittest.TestCase):
     """A class representing test cases for the save_to_file
     class method of Base class.
     """
+
+    def tearDown(self):
+        """Method that cleans up the test environment after
+        each test is executed.
+        """
+        try:
+            remove("Rectangle.json")
+        except FileNotFoundError:
+            pass
+        try:
+            remove("Square.json")
+        except FileNotFoundError:
+            pass
+        try:
+            remove("Base.json")
+        except FileNotFoundError:
+            pass
 
     def test_save_to_file_one_rectangle(self):
         """A method that tests writing JSON string representation of one
