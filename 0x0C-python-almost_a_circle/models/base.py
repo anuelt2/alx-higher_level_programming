@@ -69,7 +69,7 @@ class Base:
     def save_to_file_csv(cls, list_objs):
         """Converts objects to CSV format and saves to file."""
         with open(f"{cls.__name__}.csv", mode='w', newline='') as f:
-            if list_objs is None:
+            if list_objs is None or not list_objs:
                 f.write("[]")
             else:
                 writer_obj = csv.writer(f)
