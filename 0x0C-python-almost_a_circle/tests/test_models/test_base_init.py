@@ -9,11 +9,15 @@ class TestBase(unittest.TestCase):
     """A class representing test cases for Base class."""
 
     def setUp(self):
-        """"""
+        """Method that sets up the necessary environmentand
+        objects for running each test.
+        """
         Base._Base__nb_objects = 0
 
     def tearDown(self):
-        """"""
+        """Method that cleans up the test environment after
+        each test is executed.
+        """
         del Base._Base__nb_objects
 
     def test_id_is_not_none(self):
