@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Unittest for Base class."""
+"""Unittests for base.py."""
 
 import unittest
 from models.base import Base
@@ -65,3 +65,50 @@ class TestBase(unittest.TestCase):
         self.assertEqual(base2._Base__nb_objects, 0)
         base3 = Base(357)
         self.assertEqual(base3._Base__nb_objects, 0)
+
+    def test_id_is_public_instance_attribute(self):
+        """A method that tests id is public instance attribute."""
+        base1 = Base()
+        self.assertEqual(base1.id, 1)
+        base1.id = 123
+        self.assertEqual(base1.id, 123)
+
+    def test_nb_objects_is_private_class_attribute(self):
+        """A method that tests nb_objects is private class attribute."""
+        base1 = Base()
+        with self.assertRaises(AttributeError):
+            base1.__nb_objects
+
+    def test_str_id(self):
+        """A method that tests for when id is str."""
+        base1 = Base("id")
+        self.assertEqual(base1.id, "id")
+
+    def test_float_id(self):
+        """A method that tests for when id is float."""
+        base1 = Base(9.3)
+        self.assertEqual(base1.id, 9.3)
+
+    def test_complex_id(self):
+        """A method that tests for when id is a complex number."""
+        base1 = Base(2+1j)
+        self.assertEqual(base1.id, 2+1j)
+
+    def test_inf_id(self):
+        """A method that tests for when id is inf."""
+        base1 = Base(float('inf'))
+        self.assertEqual(base1.id, float('inf'))
+
+    def test_NaN_id(self):
+        """A method that tests for when id is NaN."""
+        base1 = Base(float('NaN'))
+        self.assertNotEqual(base1.id, float('NaN'))
+
+    def test_two_class_args(self):
+        """A method that tests for two args when creating class instance."""
+        with self.assertRaises(TypeError):
+            base1 = Base(1, 2)
+
+
+if __name__ == "__main__":
+    unittest.main()
