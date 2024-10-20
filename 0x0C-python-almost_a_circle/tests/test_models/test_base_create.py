@@ -17,8 +17,8 @@ class TestBaseCreate(unittest.TestCase):
         and objects for running each test.
         """
         Base._Base__nb_objects = 0
-        self.r1 = Rectangle(10, 7, 2, 8 ,9)
-        self.s1 = Square(10, 2, 8 ,9)
+        self.r1 = Rectangle(10, 7, 2, 8, 9)
+        self.s1 = Square(10, 2, 8, 9)
 
     def tearDown(self):
         """Method that cleans up the test environment after
