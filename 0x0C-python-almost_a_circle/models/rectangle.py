@@ -16,11 +16,11 @@ class Rectangle(Base):
             y: y-coordinate.
             id: Unique id for each rectangle instance.
         """
+        super().__init__(id)
         self.width = width
         self.height = height
         self.x = x
         self.y = y
-        super().__init__(id)
 
     """width private instance attribute."""
     @property
@@ -32,7 +32,7 @@ class Rectangle(Base):
     def width(self, width):
         """Setter for width attribute."""
         if not isinstance(width, int):
-            raise TypError("width must be an integer")
+            raise TypeError("width must be an integer")
         if width <= 0:
             raise ValueError("width must be > 0")
         self.__width = width
@@ -84,43 +84,43 @@ class Rectangle(Base):
 
     def area(self):
         """Returns the area value of the Rectangle instance."""
-        return self.__width * self.__height
+        return self.width * self.height
 
     def display(self):
         """Prints to stdout the Rectangle instance with # character."""
-        print("\n" * self.__y, end="")
-        for h in range(self.__height):
-            print(" " * self.__x, end="")
-            print("#" * self.__width)
+        print("\n" * self.y, end="")
+        for h in range(self.height):
+            print(" " * self.x, end="")
+            print("#" * self.width)
 
     def __str__(self):
         """Custom __str__ method. Returns string representation
         of Rectangle.
         """
-        return ("[Rectangle] (" + str(self.id) + ") " + str(self.__x) + "/"
-                + str(self.__y) + " - " + str(self.__width) + "/" +
-                str(self.__height))
+        return ("[Rectangle] (" + str(self.id) + ") " + str(self.x) + "/"
+                + str(self.y) + " - " + str(self.width) + "/" +
+                str(self.height))
 
     def update(self, *args, **kwargs):
         """Assigns an argument or a key/value argument to attributes."""
         if len(args) >= 5:
             self.id = args[0]
-            self.__width = args[1]
-            self.__height = args[2]
-            self.__x = args[3]
-            self.__y = args[4]
+            self.width = args[1]
+            self.height = args[2]
+            self.x = args[3]
+            self.y = args[4]
         elif len(args) >= 4:
             self.id = args[0]
-            self.__width = args[1]
-            self.__height = args[2]
-            self.__x = args[3]
+            self.width = args[1]
+            self.height = args[2]
+            self.x = args[3]
         elif len(args) >= 3:
             self.id = args[0]
-            self.__width = args[1]
-            self.__height = args[2]
+            self.width = args[1]
+            self.height = args[2]
         elif len(args) >= 2:
             self.id = args[0]
-            self.__width = args[1]
+            self.width = args[1]
         elif len(args) == 1:
             self.id = args[0]
 
@@ -129,13 +129,13 @@ class Rectangle(Base):
                 if key == "id":
                     self.id = kwargs["id"]
                 if key == "width":
-                    self.__width = kwargs["width"]
+                    self.width = kwargs["width"]
                 if key == "height":
-                    self.__height = kwargs["height"]
+                    self.height = kwargs["height"]
                 if key == "x":
-                    self.__x = kwargs["x"]
+                    self.x = kwargs["x"]
                 if key == "y":
-                    self. __y = kwargs["y"]
+                    self. y = kwargs["y"]
 
     def to_dictionary(self):
         """Returns the dictionary representation of a Rectangle."""
