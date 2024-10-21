@@ -27,7 +27,7 @@ class TestBaseLoadFromFile(unittest.TestCase):
             pass
 
     def test_load_from_file_first_rectangle(self):
-        """A method that tests deserialization of json string representation
+        """A method that tests deserialization of JSON string representation
         of rectangle from file.
         """
         r1 = Rectangle(10, 7, 2, 8)
@@ -37,7 +37,7 @@ class TestBaseLoadFromFile(unittest.TestCase):
         self.assertEqual(str(list_rectangles_output[0]), str(r1))
 
     def test_load_from_file_second_rectangle(self):
-        """A method that tests deserialization of json string representation
+        """A method that tests deserialization of JSON string representation
         of rectangle from file.
         """
         r1 = Rectangle(10, 7, 2, 8)
@@ -57,7 +57,7 @@ class TestBaseLoadFromFile(unittest.TestCase):
         self.assertTrue(all(type(obj) == Rectangle for obj in list_rectangles))
 
     def test_load_from_file_first_square(self):
-        """A method that tests deserialization of json string representation
+        """A method that tests deserialization of JSON string representation
         of square from file.
         """
         s1 = Square(10, 2, 8)
@@ -67,7 +67,7 @@ class TestBaseLoadFromFile(unittest.TestCase):
         self.assertEqual(str(list_squares_output[0]), str(s1))
 
     def test_load_from_file_second_square(self):
-        """A method that tests deserialization of json string representation
+        """A method that tests deserialization of JSON string representation
         of square from file.
         """
         s1 = Square(10, 2, 8)
