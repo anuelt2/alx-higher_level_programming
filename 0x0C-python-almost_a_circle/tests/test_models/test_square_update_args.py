@@ -125,6 +125,16 @@ class TestSquareUpdateArgs(unittest.TestCase):
         with self.assertRaisesRegex(TypeError, "x must be an integer"):
             self.s1.update(15, 12, "x", "y")
 
+    def test_update_args_width_setter(self):
+        """A method that tests implementation of width setter in Square."""
+        self.s1.update(17, 11)
+        self.assertEqual(self.s1.width, 11)
+
+    def test_update_args_height_setter(self):
+        """A method that tests implementation of height setter in Square."""
+        self.s1.update(17, 21)
+        self.assertEqual(self.s1.height, 21)
+
 
 if __name__ == "__main__":
     unittest.main()
