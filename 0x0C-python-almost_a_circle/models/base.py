@@ -77,7 +77,7 @@ class Base:
                     for obj in list_objs:
                         writer_obj.writerow([obj.id, obj.width, obj.height,
                                              obj.x, obj.y])
-                elif cls.__name__ == "Square":
+                else:
                     for obj in list_objs:
                         writer_obj.writerow([obj.id, obj.size, obj.x, obj.y])
 
@@ -92,7 +92,7 @@ class Base:
                     if cls.__name__ == "Rectangle":
                         obj = cls(int(row[1]), int(row[2]), int(row[3]),
                                   int(row[4]), int(row[0]))
-                    elif cls.__name__ == "Square":
+                    else:
                         obj = cls(int(row[1]), int(row[2]), int(row[3]),
                                   int(row[0]))
                     inst_list.append(obj)
