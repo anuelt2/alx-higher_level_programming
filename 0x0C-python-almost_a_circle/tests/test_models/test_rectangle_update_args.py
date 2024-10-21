@@ -15,14 +15,14 @@ class TestRectangleUpdateArgs(unittest.TestCase):
         """Method that sets up the necessary environment
         and objects for running each test.
         """
-        Base._Base__nb_objects = 0
-        self.r1 = Rectangle(10, 10, 10, 10)
+        # Base._Base__nb_objects = 0
+        self.r1 = Rectangle(10, 10, 10, 10, 1)
 
     def tearDown(self):
         """Method that cleans up the test environment after
         each test is executed.
         """
-        del Base._Base__nb_objects
+        # del Base._Base__nb_objects
         del self.r1
 
     def test_update_args_zero(self):
