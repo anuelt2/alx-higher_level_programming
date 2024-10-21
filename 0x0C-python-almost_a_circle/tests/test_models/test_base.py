@@ -98,6 +98,26 @@ class TestBase(unittest.TestCase):
         with self.assertRaises(TypeError):
             base1 = Base(1, 2)
 
+    def test_list_id(self):
+        """A method that tests for when id is list."""
+        base1 = Base([])
+        self.assertEqual(base1.id, [])
+
+    def test_tuple_id(self):
+        """A method that tests for when id is tuple."""
+        base1 = Base(())
+        self.assertEqual(base1.id, ())
+
+    def test_set_id(self):
+        """A method that tests for when id is set."""
+        base1 = Base(())
+        self.assertEqual(base1.id, ())
+
+    def test_dict_id(self):
+        """A method that tests for when id is dict."""
+        base1 = Base({})
+        self.assertEqual(base1.id, {})
+
 
 if __name__ == "__main__":
     unittest.main()
