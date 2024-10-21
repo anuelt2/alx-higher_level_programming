@@ -25,6 +25,7 @@ class TestRectangleArea(unittest.TestCase):
         """
         del Base._Base__nb_objects
         del self.r1
+        del self.r2
 
     def test_area_normal(self):
         """A method that that tests area with normal parameters"""
