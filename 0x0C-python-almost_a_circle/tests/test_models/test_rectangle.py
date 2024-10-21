@@ -87,6 +87,12 @@ class TestRectangle(unittest.TestCase):
         r1 = Rectangle(10, 2, 17, 3, 12)
         r1.width = 76
         self.assertEqual(r1.width, 76)
+        with self.assertRaises(TypeError):
+            Rectangle("string", 7)
+        with self.assertRaises(ValueError):
+            Rectangle(0, 7)
+        with self.assertRaises(TypeError):
+            Rectangle(7.7, 7)
 
     def test_rectangle_height_getter(self):
         """A method that tests for height getter implementation for rectangle."""
@@ -98,6 +104,12 @@ class TestRectangle(unittest.TestCase):
         r1 = Rectangle(10, 2, 17, 3, 12)
         r1.height = 76
         self.assertEqual(r1.height, 76)
+        with self.assertRaises(TypeError):
+            Rectangle(7, "string")
+        with self.assertRaises(ValueError):
+            Rectangle(7, 0)
+        with self.assertRaises(TypeError):
+            Rectangle(7, 7.7)
 
     def test_rectangle_x_getter(self):
         """A method that tests for x getter implementation for rectangle."""
@@ -109,6 +121,12 @@ class TestRectangle(unittest.TestCase):
         r1 = Rectangle(10, 2, 17, 3, 12)
         r1.x = 176
         self.assertEqual(r1.x, 176)
+        with self.assertRaises(TypeError):
+            Rectangle(7, 7, "string")
+        with self.assertRaises(ValueError):
+            Rectangle(7, 7, -7)
+        with self.assertRaises(TypeError):
+            Rectangle(7, 7, 7.7)
 
     def test_rectangle_y_getter(self):
         """A method that tests for y getter implementation for rectangle."""
@@ -120,6 +138,12 @@ class TestRectangle(unittest.TestCase):
         r1 = Rectangle(10, 2, 17, 3, 12)
         r1.y = 6
         self.assertEqual(r1.y, 6)
+        with self.assertRaises(TypeError):
+            Rectangle(7, 7, 7, "string")
+        with self.assertRaises(ValueError):
+            Rectangle(7, 7, 7, -7)
+        with self.assertRaises(TypeError):
+            Rectangle(7, 7, 7, 7.7)
 
 
 if __name__ == "__main__":
