@@ -145,6 +145,11 @@ class TestRectangle(unittest.TestCase):
         with self.assertRaises(TypeError):
             Rectangle(7, 7, 7, 7.7)
 
+    def test_rectangle_str(self):
+        """A method that tests __str__ magic method for Rectangle."""
+        r1 = Rectangle(10, 2, 17, 3, 12)
+        self.assertEqual(r1.__str__(), "[Rectangle] (12) 17/3 - 10/2")
+
 
 if __name__ == "__main__":
     unittest.main()
