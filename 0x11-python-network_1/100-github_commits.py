@@ -1,14 +1,16 @@
 #!/usr/bin/python3
 """
-Script that takes 2 arguments and lists 10 commits
-from the latest, of a GitHub repository
+Script that takes 2 arguments and lists 10 commits from the
+latest to the oldest of a GitHub repository
 """
 from sys import argv
 import requests
 
 
 if __name__ == "__main__":
-    url = f"https://api.github.com/repos/{argv[2]}/{argv[1]}/commits"
+    repo = argv[1]
+    owner = argv[2]
+    url = f"https://api.github.com/repos/{owner}/{repo}/commits"
     response = requests.get(url)
     if response.status_code == 200:
         json_data = response.json()
