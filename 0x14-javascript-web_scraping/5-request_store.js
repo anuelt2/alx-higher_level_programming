@@ -7,7 +7,7 @@ const filePath = process.argv[3];
 
 request(url, { json: true }, (error, response, body) => {
   if (error) {
-    console.errror(error);
+    console.error(error);
   }
 
   fs.writeFile(filePath, body, 'utf8', (error) => {
