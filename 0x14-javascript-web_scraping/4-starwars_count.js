@@ -2,8 +2,6 @@
 const request = require('request');
 
 const url = process.argv[2];
-const antillesId = 18;
-const antillesURL = `https://swapi-api.alx-tools.com/api/people/${antillesId}/`;
 
 request(url, { json: true }, (error, response, body) => {
   if (error) {
@@ -11,11 +9,11 @@ request(url, { json: true }, (error, response, body) => {
   }
 
   let antillesMovieCount = 0;
+  let characters = [];
 
   body.results.forEach(movie => {
-    if (movie.characters.includes(antillesURL)) {
-      antillesMovieCount++;
-    }
+    characters = characters.concat(movie.characters);
   });
+  antillesMovieCount = characters.filter(characterURL => characterURL.includes('18')).length;
   console.log(antillesMovieCount);
 });
