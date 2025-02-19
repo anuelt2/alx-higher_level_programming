@@ -2,7 +2,7 @@
 $(document).ready(function () {
   function fetchLangHello () {
     const langCode = $('INPUT#language_code').val();
-    $.get(`https://www.fourtonfish.com/hellosalut/?lang=${langCode}`, function (data) {
+    $.get(`https://hellosalut.stefanbohacek.dev/?lang=${langCode}`, function (data) {
       $('DIV#hello').text(data.hello);
     });
   }
